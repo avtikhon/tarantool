@@ -13,7 +13,7 @@ jobs:
     if: github.event_name == 'repository_dispatch' ||
         github.event_name == 'workflow_dispatch'
 
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
 
     strategy:
       fail-fast: false
