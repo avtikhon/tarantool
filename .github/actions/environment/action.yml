@@ -47,6 +47,12 @@ runs:
                 free
             fi
         fi
+        branch_name=${{ github.head_ref }}
+        if ${{ github.event_name != 'pull_request' }} ; then
+          branch_name=${{ github.ref }}
+          branch_name=${branch_name#refs/heads/}
+        fi
+        git checkout $branch_name && git pull --tags || true
         # Drop a tag that points to a current commit (if any)
         # on a job triggered by pushing to a branch.
         if ${{ ! startsWith(github.ref, 'refs/tags/') }}; then
