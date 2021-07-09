@@ -4,6 +4,11 @@ runs:
   using: "composite"
   steps:
     - run: |
+        echo "git describe --long --tags"
+        git describe --long --tags
+        echo "git describe --long"
+        git describe --long
+        exit 0
         # Our testing expects that the init process (PID 1) will
         # reap orphan processes. At least the following test leans
         # on it: app-tap/gh-4983-tnt-e-assert-false-hangs.test.lua.
